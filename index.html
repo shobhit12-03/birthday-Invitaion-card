@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>👑 Shobhit Birthday Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    color:white;
+    text-align:center;
+}
+
+/* ===== WELCOME PAGE ===== */
+#welcomePage{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:radial-gradient(circle at top,#ffd700,#b8860b,#000);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    animation:fadeIn 2s ease-in-out;
+}
+
+#welcomePage h1{
+    font-size:8vw;
+    text-shadow:0 0 30px gold,0 0 60px orange;
+}
+
+#welcomePage button{
+    margin-top:40px;
+    padding:15px 45px;
+    border-radius:50px;
+    border:none;
+    font-size:20px;
+    background:linear-gradient(45deg,gold,orange);
+    cursor:pointer;
+    font-weight:bold;
+    box-shadow:0 0 25px gold;
+}
+
+/* ===== INVITATION PAGE ===== */
+#invitationPage{
+    display:none;
+    height:100vh;
+    width:100%;
+    background:url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3') no-repeat center center/cover;
+    position:relative;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+#invitationPage::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    z-index:0;
+}
+
+.container{
+    position:relative;
+    z-index:1;
+    background:rgba(255,215,0,0.15);
+    padding:40px;
+    border-radius:30px;
+    backdrop-filter:blur(25px);
+    border:1px solid gold;
+    width:95%;
+    max-width:520px;
+    box-shadow:0 0 50px gold;
+}
+
+.royal-name{
+    font-size:40px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-shadow:0 0 20px gold;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 20px gold; }
+    to{ text-shadow:0 0 60px white,0 0 80px gold; }
+}
+
+.special-names span{
+    background:gold;
+    color:black;
+    padding:8px 20px;
+    border-radius:30px;
+    margin:6px;
+    display:inline-block;
+    font-weight:bold;
+    box-shadow:0 0 15px gold;
+}
+
+.detail-box{
+    background:rgba(255,255,255,0.2);
+    padding:14px;
+    margin:14px 0;
+    border-radius:20px;
+    font-weight:bold;
+    box-shadow:0 0 20px gold;
+}
+
+.countdown{
+    margin-top:20px;
+    padding:15px;
+    background:rgba(0,0,0,0.5);
+    border-radius:20px;
+    box-shadow:0 0 25px gold;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.countdown span{
+    color:gold;
+    font-size:24px;
+}
+
+button{
+    margin-top:15px;
+    padding:12px 28px;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    background:linear-gradient(45deg,#ffcc00,#ff6600);
+    color:black;
+    box-shadow:0 0 20px gold;
+}
+
+/* Balloons */
+.balloon{
+    position:fixed;
+    bottom:-100px;
+    width:40px;
+    height:60px;
+    border-radius:50%;
+    animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+    to{ transform:translateY(-110vh); }
+}
+
+/* Fireworks */
+.firework{
+    position:fixed;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+    0%{ transform:scale(1); opacity:1; }
+    100%{ transform:scale(25); opacity:0; }
+}
+
+/* ===== POPUP ===== */
+.popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+    max-width:500px;
+    padding:30px;
+    border-radius:25px;
+    border:2px solid gold;
+    display:none;
+    z-index:5;
+    background:rgba(0,0,0,0.9);
+    box-shadow:0 0 40px gold;
+}
+
+.popup-img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 0 25px gold;
+    opacity:0;
+    transform:scale(0.8);
+    transition:all 1s ease;
+}
+
+.popup-content{
+    opacity:0;
+    transition:opacity 1s ease;
+    margin-top:20px;
+}
+
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<div id="welcomePage">
+    <h1>Special Invitation🎀</h1>
+    <button onclick="enterParty()">ENTER</button>
+</div>
+
+<div id="invitationPage">
+    <div class="container">
+        <div class="royal-name">Shobhit's Birthday</div>
+
+        <p>With honor, I invite💐</p>
+
+        <div class="special-names">
+            <span>Falguni</span>
+            <span>Ananya</span>
+            <span>Sejal</span>
+        </div>
+
+        <div class="detail-box">📅 12 March 2026</div>
+        <div class="detail-box">🕒 2:00 PM</div>
+        <div class="detail-box">📍 Jaipur</div>
+
+        <div class="countdown" id="countdown"></div>
+
+        <button id="voiceBtn" onclick="toggleVoice()">🎤 Play this guys</button>
+        <button id="songBtn" onclick="toggleSong()">🎵 Play Birthday Song</button>
+        <button onclick="showPopup()">💌 Special Message</button>
+
+        <audio id="myVoice" src="voice.mp3"></audio>
+        <audio id="bdaySong" src="birthday.mp3"></audio>
+    </div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+
+<img src="mypopup.jpg" alt="Special Image" class="popup-img" id="popupImg">
+
+<div class="popup-content" id="popupText">
+    <h2>💖 Special For You 💖</h2>
+    <p>
+        Falguni, Ananya & Sejal ❤️ <br><br>
+        I am inviting you especially because this day would feel incomplete without you guys. 
+        Your presence is not just important to me — it means everything. 
+        The happiness of this celebration will be truly special only if you are there to share it. 
+        So I want you guys to come and have fun ✨
+    </p>
+    <h2>Thank you 🫶</h2>
+</div>
+
+<br>
+<button onclick="closePopup()">Close</button>
+</div>
+
+<audio id="bgMusic" src="party.mp3" loop></audio>
+
+<script>
+
+function enterParty(){
+    document.getElementById("welcomePage").style.display="none";
+    document.getElementById("invitationPage").style.display="flex";
+    document.getElementById("bgMusic").play();
+    createBalloons();
+    autoFireworks();
+    startCountdown();
+}
+
+function showPopup(){
+    const popup = document.getElementById("popup");
+    const img = document.getElementById("popupImg");
+    const text = document.getElementById("popupText");
+
+    popup.style.display="block";
+
+    setTimeout(()=>{
+        img.style.opacity="1";
+        img.style.transform="scale(1)";
+    },200);
+
+    setTimeout(()=>{
+        text.style.opacity="1";
+    },800);
+}
+
+function closePopup(){
+    const popup = document.getElementById("popup");
+    const img = document.getElementById("popupImg");
+    const text = document.getElementById("popupText");
+
+    popup.style.display="none";
+    img.style.opacity="0";
+    img.style.transform="scale(0.8)";
+    text.style.opacity="0";
+}
+
+function startCountdown(){
+    const eventDate = new Date("March 12, 2026 14:00:00").getTime();
+    const timer = setInterval(function(){
+
+        const now = new Date().getTime();
+        const distance = eventDate - now;
+
+        if(distance < 0){
+            clearInterval(timer);
+            document.getElementById("countdown").innerHTML =
+            "🎉 The Royal Day Has Arrived! 👑";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000*60*60*24));
+        const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+        const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+        const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+        "⏳ <span>" + days + "</span> Days " +
+        "<span>" + hours + "</span> Hours " +
+        "<span>" + minutes + "</span> Minutes " +
+        "<span>" + seconds + "</span> Seconds ";
+    },1000);
+}
+
+function toggleVoice(){
+    const audio = document.getElementById("myVoice");
+    const btn = document.getElementById("voiceBtn");
+
+    if(audio.paused){
+        audio.play();
+        btn.innerHTML = "⏸ Pause Voice";
+    } else {
+        audio.pause();
+        btn.innerHTML = "🎤 Play this guys";
+    }
+}
+
+function toggleSong(){
+    const audio = document.getElementById("bdaySong");
+    const btn = document.getElementById("songBtn");
+
+    if(audio.paused){
+        audio.play();
+        btn.innerHTML = "⏸ Pause Birthday Song";
+    } else {
+        audio.pause();
+        btn.innerHTML = "🎵 Play Birthday Song";
+    }
+}
+
+function createBalloons(){
+    for(let i=0;i<15;i++){
+        let b=document.createElement("div");
+        b.className="balloon";
+        b.style.left=Math.random()*100+"vw";
+        b.style.background="hsl("+Math.random()*360+",80%,60%)";
+        b.style.animationDuration=(6+Math.random()*6)+"s";
+        document.body.appendChild(b);
+    }
+}
+
+function autoFireworks(){
+    setInterval(()=>{
+        let f=document.createElement("div");
+        f.className="firework";
+        f.style.left=Math.random()*100+"vw";
+        f.style.top=Math.random()*60+"vh";
+        f.style.background="hsl("+Math.random()*360+",100%,50%)";
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),1000);
+    },800);
+}
+
+</script>
+
+</body>
+</html>
