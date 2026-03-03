@@ -154,6 +154,8 @@ button{
     height:60px;
     border-radius:50%;
     animation:floatUp linear infinite;
+    z-index:3;              /* make balloons above container */
+    pointer-events:none;    /* so they don't block buttons */
 }
 
 @keyframes floatUp{
